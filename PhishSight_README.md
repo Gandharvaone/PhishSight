@@ -80,7 +80,8 @@ You can repeat for the rest
 5. **Confirm Lookup Sharing:**
 In the Lookup Definitions tab, make sure all datasets show App = search and Sharing = App.
 
-**Screenshot:** `screenshots/lookup_config.png`
+<img width="1857" height="1220" alt="lookup_config" src="https://github.com/user-attachments/assets/36fbf943-3a20-478d-a3f3-fe6ed4573e53" />
+
 
 ---
 
@@ -109,8 +110,8 @@ This panel calculates the composite risk score using email authentication and HT
 |-----------|---------|------|------------|
 | E001 | support@amazon-secure.xyz | 40 | Medium |
 | E003 | hr@corp.local | 0 | Low |
+<img width="1857" height="1730" alt="risk_table_output" src="https://github.com/user-attachments/assets/2aad8087-97ce-408b-931b-39158249608a" />
 
-**Screenshot:** `screenshots/risk_table_output.png`
 
 ---
 
@@ -132,7 +133,8 @@ Users interacted with phishing emails impersonating well-known brands such as HD
 |-----------|---------|--------|--------------|
 | E019 | support@hdfc-alerts.in | hdfc-alerts.in | 203.0.113.15 | Mozilla/5.0 |
 
-**Screenshot:** `screenshots/emails_clicked_panel.png`
+<img width="1857" height="1459" alt="emails_clicked_panel" src="https://github.com/user-attachments/assets/84590300-0e82-4afa-ae47-138c8b13a2b0" />
+
 
 ---
 
@@ -163,7 +165,8 @@ Translates calculated risk into a recommended SOC action.
 | E004 | service@paypal.com | 0 | Low | Allow |
 | E015 | career@corp.local | 0 | Low | Allow |
 
-**Screenshot:** `screenshots/actions_panel.png`
+<img width="1857" height="1760" alt="actions_panel" src="https://github.com/user-attachments/assets/600a8163-ca93-4689-941e-7abd2e2220b2" />
+
 
 ---
 
@@ -174,7 +177,8 @@ The PhishSight dashboard visualizes:
 - Real-time sender reputation scoring and domain authentication failures.
 - Analyst guidance through Action Center.
 
-**Screenshot:** `screenshots/dashboard_main.png`
+<img width="1857" height="2423" alt="dashboard_main" src="https://github.com/user-attachments/assets/137e7bcb-9375-47fb-8ba3-816e0f973d38" />
+
 
 ---
 
@@ -197,10 +201,13 @@ The PhishSight dashboard visualizes:
 ---
 
 ## Results
-PhishSight demonstrates effective detection and triage using transparent scoring:
-- Detection precision: ~94%
-- False positive rate: <5%
-- Recommended actions accurately reflect message authenticity.
+Based on the simulated dataset and detection logic:
+
+- Detection Accuracy: Successfully identified and classified all simulated phishing emails according to the defined risk criteria
+- False Positives: No legitimate emails were incorrectly flagged as phishing in the test dataset
+- Action Recommendations: The scoring system consistently generated appropriate actions (Quarantine/Allow) that matched expected outcomes for each test case
+
+Note: These results demonstrate the effectiveness of the detection methodology in a controlled environment using synthetic data.
 
 ---
 
