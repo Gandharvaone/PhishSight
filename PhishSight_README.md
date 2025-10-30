@@ -1,4 +1,4 @@
-# PhishSight — Multi-Vector Phishing Detection (Splunk)
+# PhishSight Multi-Vector Phishing Detection (Splunk)
 
 ## Overview
 PhishSight is a Security Operations Center (SOC) project developed in Splunk to detect and classify phishing attacks using multiple evidence sources.  
@@ -21,45 +21,61 @@ The project simulates a real SOC workflow where phishing indicators are collecte
 
 ## Architecture Overview
 
-**File:** `diagrams/phishsight_architecture.png`
+**Diagram:** `diagrams/phishsight_architecture.png`
 
-### Components
-1. Inbound Mailbox / Email Gateway – Receives legitimate and phishing emails.  
-2. PhishSight Parser – Extracts SPF, DKIM, DMARC, URLs, and HTML attributes.  
-3. CSV Data Exports – Structured datasets:
-   - email_events.csv  
-   - url_signals.csv  
-   - html_signals.csv  
-   - honey_clicks.csv  
-4. Splunk Lookup Layer – Imports CSVs as lookup datasets.  
-5. Correlation Engine (SPL) – Calculates risk and suggests remediation actions.  
-6. PhishSight Dashboard – Displays live phishing analysis and decision support.
+**Components**
+1) **Inbound Mailbox / Email Gateway** → sample emails  
+2) **PhishSight Parser** → extracts headers, URLs, HTML indicators  
+3) **CSV Data Exports (USED):**  
+   - `email_events.csv` (one row per email; spf_result, dkim_result, dmarc_result, from, subject, sending_domain, etc.)  
+   - `url_signals.csv` (per email_id; url, url_suspect, domain_age_days, brand_impersonation, etc.)  
+   - `html_signals.csv` (per email_id; forms_present, obfuscation, external_js, data_uri, etc.)  
+   - `honey_clicks.csv` (per email_id; click_time, client_ip, user_agent)  
+4) **Splunk Lookup Layer** → import CSVs as lookups  
+5) **Correlation Engine (SPL)** → computes `risk` & `risk_level`  
+6) **PhishSight Dashboard** → Risk Scoring, Emails Clicked, Action Center
 
-**Flow:**  
-Mail → Parser → CSV Lookups → SPL Scoring → Dashboard → Analyst Response
+Mail → Parser → CSV Lookups → **SPL Scoring** → Dashboard → Analyst Response
 
 ---
-
-## Environment Setup
+## Platform Setup & Lookup Configuration
 
 **Platform:** Splunk Free Instance (Local)  
 **System:** Windows 11 Home Lab  
-**Dataset Sources:** Simulated phishing samples and open phishing datasets (SpamAssassin, PhishTank, Kaggle Email Security)
+**Dataset Sources:** Simulated phishing samples and open-source phishing datasets (SpamAssassin, PhishTank, Kaggle Email Security)
 
-### Steps
-1. Navigate to **Settings → Lookups → Lookup Table Files → Add New**.  
-2. Upload:
-   - email_events.csv  
-   - url_signals.csv  
-   - html_signals.csv  
-   - honey_clicks.csv (optional)  
-3. Set lookup permissions to “Shared in App.”  
-4. Validate data:
+---
+
+### Steps to Configure Lookups in Splunk
+
+1. **Open Lookup Settings:**  
+   Navigate to:  
+   `Settings → Lookups → Lookup Table Files → Add New`
+
+2. **Upload the following lookup files:**  
+   - `email_events.csv`  
+   - `url_signals.csv`  
+   - `html_signals.csv`  
+   - `honey_clicks.csv` *(optional – used for user click tracking)*  
+   - *(Future enrichments)* `bad_ip_reputation.csv`, `dns_logs.csv`, `edr_logs.csv`, `login_logs.csv`  
+
+3. **Set Permissions:**  
+   After uploading each CSV, click **Permissions → Shared in App**.  
+   This ensures all dashboards and correlation searches within *PhishSight* can access them.
+
+4. **Validate the Data Load:**  
+   Run the following SPL command to verify that each lookup is loaded correctly:
    ```spl
    | inputlookup email_events.csv | head 5
-   ```
+If the first five rows appear, your lookup is configured properly.
 
-**Screenshot:** `screenshots/lookup_config.png`
+You can repeat for the rest:
+| inputlookup url_signals.csv | head 5
+| inputlookup html_signals.csv | head 5
+| inputlookup honey_clicks.csv | head 5
+
+5. **Confirm Lookup Sharing:**
+In the Lookup Definitions tab, make sure all datasets show App = search and Sharing = App.
 
 ---
 
