@@ -69,10 +69,13 @@ Mail → Parser → CSV Lookups → **SPL Scoring** → Dashboard → Analyst Re
    | inputlookup email_events.csv | head 5
 If the first five rows appear, your lookup is configured properly.
 
-You can repeat for the rest:
+You can repeat for the rest
+
 | inputlookup url_signals.csv | head 5
-| inputlookup html_signals.csv | head 5
-| inputlookup honey_clicks.csv | head 5
+
+| inputlookup html_signals.csv | head 5 
+
+| inputlookup honey_clicks.csv | head 5 
 
 5. **Confirm Lookup Sharing:**
 In the Lookup Definitions tab, make sure all datasets show App = search and Sharing = App.
