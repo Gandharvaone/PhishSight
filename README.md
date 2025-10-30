@@ -37,6 +37,8 @@ The project simulates a real SOC workflow where phishing indicators are collecte
 **Flow:**  
 Mail → Parser → CSV Lookups → SPL Scoring → Dashboard → Analyst Response
 
+<img width="3855" height="917" alt="Phishsight" src="https://github.com/user-attachments/assets/ffb3aca2-f94a-47b4-8f1c-38c783dfe261" />
+
 ---
 
 ## Environment Setup
