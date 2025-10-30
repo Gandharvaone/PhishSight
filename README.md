@@ -21,7 +21,8 @@ The project simulates a real SOC workflow where phishing indicators are collecte
 
 ## Architecture Overview
 
-**Diagram:** `diagrams/phishsight_architecture.png`
+<img width="668" height="750" alt="PhishSight_arch" src="https://github.com/user-attachments/assets/bb9d0aaa-fef0-44bf-acf6-81dcaef9a967" />
+
 
 **Components**
 1) **Inbound Mailbox / Email Gateway** → sample emails  
