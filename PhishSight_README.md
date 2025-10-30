@@ -80,6 +80,8 @@ You can repeat for the rest
 5. **Confirm Lookup Sharing:**
 In the Lookup Definitions tab, make sure all datasets show App = search and Sharing = App.
 
+**Screenshot:** `screenshots/lookup_config.png`
+
 ---
 
 ## Dashboard Panels
