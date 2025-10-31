@@ -195,10 +195,3 @@ Note: These results demonstrate the effectiveness of the detection methodology i
 ## Conclusion
 PhishSight transforms simple lookup datasets into an operational phishing detection and response workflow within Splunk.  
 It enables transparent risk scoring, actionable recommendations, and clear analyst visibility across all email telemetry layers.
-
----
-
-**Author:** Gandharva  
-**Environment:** Splunk Free Instance (Home)  
-**Category:** Email Security / Phishing Detection  
-**Date:** October 2025
